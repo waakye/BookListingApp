@@ -15,19 +15,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Create a fake list of books
-        ArrayList<String> books = new ArrayList<>();
-        books.add("Moby Dick");
-        books.add("Tale of Two Cities");
-        books.add("Bridget Jones Diary");
-        books.add("Silence of the Lambs");
-        books.add("The Bible");
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Herman Melville", "Moby Dick"));
+        books.add(new Book("Charles Dickens", "Tale of Two Cities"));
+        books.add(new Book("Helen Fielding", "Bridget Jones Diary"));
+        books.add(new Book("Thomas Harris", "Silence of the Lambs"));
+        books.add(new Book("Anonymous", "The Bible"));
 
         // Find a reference to the {@link ListView} in the layout
         ListView bookListView = (ListView) findViewById(R.id.list);
 
-        // Create a new {@link ArrayAdapter} of books
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, books);
+        // Create a new {@link ArrayAdapter} in the layout
+        BookAdapter adapter = new BookAdapter(this, books);
 
         // Set the adapter on the {@link ListView} so the list can be populated in the UI
         bookListView.setAdapter(adapter);
